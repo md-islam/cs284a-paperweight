@@ -16,4 +16,4 @@ This repository contains the proposal website for an interactive paper butterfly
 
 ## Local preview
 
-Open `index.html` in a browser. No build or dependencies are required. `styles.css` provides responsive layouts and US Letter print styles. Local revisions remain unpublished until pushed.
+Open `index.html` in a browser. No build or dependencies are required. The page contains its styling inline. Local revisions remain unpublished until pushed.

@@ -1,34 +1,81 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Paperweight: Pop-Up Butterfly — a proposal for a JavaScript and Three.js paper simulation, UC Berkeley CS184/284A, Fall 2026."><title>Paperweight: Pop-Up Butterfly</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap"><link rel="stylesheet" href="styles.css"></head>
-<body><div class="container"><a class="skip" href="#main">Skip to proposal</a>
+<html>
+	<head>
+		<title>Paperweight: Pop-Up Butterfly</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+		<style>
+			h1 {
+				text-align: center;
+			}
 
-<header><h1 id="title"><span id="source-1"><span class="label">Title: </span>Paperweight: Pop-Up Butterfly</span></h1><p>UC Berkeley CS 184/284A · Fall 2026</p><p id="source-3">Team Members: <a href="https://github.com/kxchier">Kate Chier</a>, <a href="https://github.com/sofiamv">Sofia Vargas</a>, <a href="https://github.com/ltang16">Lauren Tang</a>, <a href="https://github.com/md-islam">Md Islam</a></p><p>Proposal website: <a href="https://md-islam.github.io/cs284a-paperweight/">https://md-islam.github.io/cs284a-paperweight/</a></p></header>
-<main id="main">
-<section id="overview" aria-labelledby="overview-heading"><div class="section-head"><h2 id="overview-heading"><span id="source-0">Title, Summary and Team Members</span></h2></div>
+			.container {
+				margin: 0 auto;
+				padding: 60px 20%;
+			}
 
-<p id="source-2">Summary: Build an interactive paper butterfly that unfolds as a book opens. We will investigate how paper mass and stiffness affect the shape of the butterfly and the unfolding.</p>
+			figure {
+				text-align: center;
+			}
 
-</section>
-<section id="problem" aria-labelledby="problem-heading"><div class="section-head"><h2 id="problem-heading"><span id="source-4">Problem Description</span></h2></div>
-<p id="source-5">Our project aims to extend the results of the paper “A Geometric Study of V-style Pop-ups” by adding considerations for different types of paper. The discussion section of the paper identifies the consideration of paper properties, such as thickness, weight, and warping, as a potential direction for future work with significant practical value. Accounting for these variations would make the model more versatile and applicable to real-world uses, particularly in areas such as video game graphics and animation. We plan to solve this problem by conducting preliminary research on the physical properties of different types of paper, adding different coefficients to the base equations accordingly, and running simulations of each paper type. Ultimately, we hope that this project will give us a stronger understanding of how physical materials affect the geometry and rendering of pop up books.</p>
-</section>
-<section id="goals" aria-labelledby="goals-heading"><div class="section-head"><h2 id="goals-heading"><span id="source-6">Goals and Deliverables</span></h2></div>
-<p id="source-7">We plan to deliver an animation of a pop-up book, going from a closed to a fully-open state and vice versa, to display all the intermediate parts of the paper (un)folding. This can be included in our webpage as a GIF or embedded video. We can measure the quality of the created pop-up book by seeing if it folds and unfolds as planned in the animation, and also whether or not the folding behavior for at least 2 different paper materials is as expected.</p>
-<p id="source-8">Questions we aim to answer:</p>
-<ul id="source-9"><li>How does the folding behavior differ for the same pop-up book when using different materials?</li><li>How can we factor material types into our physics/rendering code?</li></ul>
-<p id="source-10">We hope to deliver animations involving more than 2 distinct paper materials. We also are interested in the concept of motion fitting, where in order to produce a specific movement, we need to figure out the paper folds which would produce it – if we have additional time, we hope to implement this as well.</p>
-</section>
-<section id="schedule" aria-labelledby="schedule-heading"><div class="section-head"><h2 id="schedule-heading"><span id="source-11">Schedule</span></h2></div>
-<article id="source-12"><h3>Week 1:</h3><p>Review geometric and physical pop-up simulation literature to clarify the technical contributions and understand how we might approach the unfolding simulation. Build physical butterflies and begin coding the pop-up built in code.</p></article>
-<article id="source-13"><h3>Week 2:</h3><p>Implement flexible wings, gravity, and attachment constraints. Measure paper samples and calibrate parameters to add to the system. Test the system with default parameters on a butterfly.</p></article>
-<article id="source-14"><h3>Week 3:</h3><p>Test additional parameters on the butterfly and collect videos of the animation and error measurements.</p></article>
-<article id="source-15"><h3>Week 4:</h3><p>Finish comparisons and prepare the final paper, video, and presentation.</p></article>
-</section>
-<section id="resources" aria-labelledby="resources-heading"><div class="section-head"><h2 id="resources-heading"><span id="source-16">Resources</span></h2></div>
-<p id="source-17">A Geometric Study of V-Style Pop Ups:<br><a href="https://dl.acm.org/doi/10.1145/2010324.1964993">https://dl.acm.org/doi/10.1145/2010324.1964993</a></p>
-<ul id="source-18"><li>Reference for constructing a V-fold mechanism and calculating opening and closing motion</li></ul>
-<p id="source-19">Generating Animated Paper Pop Ups:<br><a href="https://link.springer.com/article/10.1007/s00371-015-1125-8">https://link.springer.com/article/10.1007/s00371-015-1125-8</a></p>
-<ul id="source-20"><li>Reference for modeling paper using mass-spring systems and hing springs</li></ul>
-<p id="source-21">Computing Platform: Develop in VS Code using Javascript and Three.js (starting code is a Three.js scene)</p>
-</section></main>
-<footer><strong>PAPERWEIGHT</strong><p>Team Paperweight · UC Berkeley CS184/284A · Fall 2026</p><p>Proposal website: <a href="https://md-islam.github.io/cs284a-paperweight/">https://md-islam.github.io/cs284a-paperweight/</a></p><a href="https://cs184.eecs.berkeley.edu/fa26/project/">Course project specification</a></footer></div></body></html>
+			img {
+				display: inline-block;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<h1>Paperweight: Pop-Up Butterfly</h1>
+		<div style="text-align: center;">CS184/284A Fall 2026 Final Project Proposal</div>
+		<div style="text-align: center;">Team Members: Kate Chier, Sofia Vargas, Lauren Tang, Md Islam</div>
+
+		<br>
+
+		Link to webpage: <a href="https://md-islam.github.io/cs284a-paperweight/">md-islam.github.io/cs284a-paperweight/</a>
+
+		<h2>Summary</h2>
+		<p>Build an interactive paper butterfly that unfolds as a book opens. We will investigate how paper mass and stiffness affect the shape of the butterfly and the unfolding.</p>
+
+		<h2>Problem Description</h2>
+		<p>Our project aims to extend the results of the paper &ldquo;A Geometric Study of V-style Pop-ups&rdquo; by adding considerations for different types of paper. The discussion section of the paper identifies the consideration of paper properties, such as thickness, weight, and warping, as a potential direction for future work with significant practical value. Accounting for these variations would make the model more versatile and applicable to real-world uses, particularly in areas such as video game graphics and animation. We plan to solve this problem by conducting preliminary research on the physical properties of different types of paper, adding different coefficients to the base equations accordingly, and running simulations of each paper type. Ultimately, we hope that this project will give us a stronger understanding of how physical materials affect the geometry and rendering of pop up books.</p>
+
+		<h2>Goals and Deliverables</h2>
+		<p>We plan to deliver an animation of a pop-up book, going from a closed to a fully-open state and vice versa, to display all the intermediate parts of the paper (un)folding. This can be included in our webpage as a GIF or embedded video. We can measure the quality of the created pop-up book by seeing if it folds and unfolds as planned in the animation, and also whether or not the folding behavior for at least 2 different paper materials is as expected.</p>
+
+		<p>Questions we aim to answer:</p>
+		<ul>
+			<li>How does the folding behavior differ for the same pop-up book when using different materials?</li>
+			<li>How can we factor material types into our physics/rendering code?</li>
+		</ul>
+
+		<p>We hope to deliver animations involving more than 2 distinct paper materials. We also are interested in the concept of motion fitting, where in order to produce a specific movement, we need to figure out the paper folds which would produce it &ndash; if we have additional time, we hope to implement this as well.</p>
+
+		<h2>Schedule</h2>
+		<ul>
+			<li><b>Week 1:</b> Review geometric and physical pop-up simulation literature to clarify the technical contributions and understand how we might approach the unfolding simulation. Build physical butterflies and begin coding the pop-up built in code.</li>
+			<li><b>Week 2:</b> Implement flexible wings, gravity, and attachment constraints. Measure paper samples and calibrate parameters to add to the system. Test the system with default parameters on a butterfly.</li>
+			<li><b>Week 3:</b> Test additional parameters on the butterfly and collect videos of the animation and error measurements.</li>
+			<li><b>Week 4:</b> Finish comparisons and prepare the final paper, video, and presentation.</li>
+		</ul>
+
+		<h2>Resources</h2>
+		<ul>
+			<li>
+				A Geometric Study of V-Style Pop Ups: <a href="https://dl.acm.org/doi/10.1145/2010324.1964993">https://dl.acm.org/doi/10.1145/2010324.1964993</a>
+				<ul>
+					<li>Reference for constructing a V-fold mechanism and calculating opening and closing motion</li>
+				</ul>
+			</li>
+			<li>
+				Generating Animated Paper Pop Ups: <a href="https://link.springer.com/article/10.1007/s00371-015-1125-8">https://link.springer.com/article/10.1007/s00371-015-1125-8</a>
+				<ul>
+					<li>Reference for modeling paper using mass-spring systems and hing springs</li>
+				</ul>
+			</li>
+		</ul>
+		<p><b>Computing Platform:</b> Develop in VS Code using Javascript and Three.js (starting code is a Three.js scene)</p>
+		</div>
+	</body>
+</html>
